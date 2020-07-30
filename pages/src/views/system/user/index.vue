@@ -153,7 +153,8 @@
 					></el-input>
 				</el-form-item>
 				<el-form-item label="归属部门" prop="dept">
-					<!-- <treeselect v-model="addUserForm.deptId" :multiple="true" :options="deptlist" /> -->
+					<treeselect v-model="addUserForm.deptId" :multiple="true" :options="deptlist" />
+					<treeselect-value :value="addUserForm.deptId" />
 				</el-form-item>
 				<el-form-item label="手机号码" prop="phone">
 					<el-input v-model="addUserForm.phone" placeholder="请输入手机号码"></el-input>
@@ -238,40 +239,25 @@ export default {
 			// 部门数据
 			deptlist: [
 				{
+					id: '1',
 					label: '节能科技',
 					children: [
 						{
+							id: '10',
 							label: '深圳',
 							children: [
-								{
-									label: '开发部门'
-								},
-								{
-									label: '开发部门'
-								},
-								{
-									label: '开发部门'
-								},
-								{
-									label: '开发部门'
-								},
-								{
-									label: '开发部门'
-								}
+								{ id: '101', label: '开发部门' },
+								{ id: '102', label: '维护部门' },
+								{ id: '103', label: '测试部门' }
 							]
 						},
 						{
+							id: '11',
 							label: '长沙分公司',
 							children: [
-								{
-									label: '开发部门'
-								},
-								{
-									label: '开发部门'
-								},
-								{
-									label: '开发部门'
-								}
+								{ id: '111', label: '开发部门' },
+								{ id: '112', label: '维护部门' },
+								{ id: '113', label: '测试部门' }
 							]
 						}
 					]
