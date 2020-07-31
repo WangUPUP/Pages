@@ -28,6 +28,7 @@ module.exports = {
 		'no-tabs': 'off',
 		indent: 'off',
 		'space-before-function-paren': 0,
-		semi: 0
+		semi: 0,
+		'workbench.editor.enablePreview': false //打开文件不覆盖
 	}
 }
