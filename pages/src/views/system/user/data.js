@@ -30,7 +30,7 @@ export default {
 					]
 				}
 			],
-			// 用户搜索关键字表单
+			// 搜索用户表单对象
 			userForm: {
 				userName: '',
 				phone: '',
@@ -48,7 +48,7 @@ export default {
 					label: '停用'
 				}
 			],
-			// 用户数据
+			// 用户数据列表
 			userList: [
 				{
 					id: 1,
@@ -132,8 +132,28 @@ export default {
 					value: 2
 				}
 			],
+			// 控制修改用户弹出框的显示和隐藏
+			editUserDialogVisible: false,
+			// 修改用户表单对象
+			editUserForm: {
+				nickName: '',
+				deptId: [],
+				phone: '',
+				email: '',
+				userName: '',
+				password: '',
+				gender: '',
+				status: '',
+				postId: '',
+				roleId: '',
+				remark: ''
+			},
 			// 控制导入用户数据弹出框的显示和隐藏
-			uploadDialogVisible: false
+			uploadDialogVisible: false,
+			// 是否更新已经存在的用户数据
+			checked: false,
+			// 控制搜索区域的显示和隐藏
+			showSearch: true
 		}
 	}
 }

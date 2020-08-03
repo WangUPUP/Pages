@@ -20,7 +20,7 @@
 			<!-- 用户数据区域 -->
 			<el-col :span="20" class="user-contain">
 				<!-- 用户数据搜索区域 -->
-				<el-row>
+				<el-row v-if="showSearch">
 					<el-form label-width="70px" :model="userForm" class="user-search">
 						<el-form-item label="用户名称" prop="userName" class="search-form-item">
 							<el-input v-model="userForm.userName" clearable placeholder="请输入用户名称"></el-input>
@@ -60,23 +60,56 @@
 				</el-row>
 				<!-- 用户数据区域 -->
 				<el-row>
-					<!-- 操作区域 -->
-					<el-row class="user-btns">
-						<el-button icon="el-icon-plus" size="mini" type="primary" @click="showAddUserDialogVisible">
-							新增
-						</el-button>
-						<el-button icon="el-icon-edit" size="mini" type="success">修改</el-button>
-						<el-button icon="el-icon-delete" size="mini" type="danger">删除</el-button>
-						<el-button icon="el-icon-upload2" size="mini" type="info" @click="showUploadDialogVisible">
-							导入
-						</el-button>
-						<el-button icon="el-icon-download" size="mini" type="warning" @click="showExportDialogVisible"
-							>导出</el-button
-						>
+					<!-- 用户操作区域 -->
+					<el-row class="user-btns" type="flex" justify="space-between">
+						<el-col>
+							<el-button icon="el-icon-plus" size="mini" type="primary" @click="showAddUserDialogVisible">
+								新增
+							</el-button>
+							<el-button icon="el-icon-edit" size="mini" type="success" @click="showEditUserDialogVisible"
+								>修改</el-button
+							>
+							<el-button
+								icon="el-icon-delete"
+								size="mini"
+								type="danger"
+								@click="showDeleteUserDataDialogVisible"
+								>删除</el-button
+							>
+							<el-button icon="el-icon-upload" size="mini" type="info" @click="showUploadDialogVisible">
+								导入
+							</el-button>
+							<el-button
+								icon="el-icon-download"
+								size="mini"
+								type="warning"
+								@click="showExportDialogVisible"
+							>
+								导出
+							</el-button>
+						</el-col>
+						<el-col :span="2">
+							<el-tooltip class="item" effect="dark" content="刷新用户数据" placement="top">
+								<el-button circle icon="el-icon-refresh" class="hide-search"></el-button>
+							</el-tooltip>
+							<el-tooltip class="item" effect="dark" content="隐藏用户搜索" placement="top">
+								<el-button
+									circle
+									icon="el-icon-search"
+									class="refresh"
+									@click="showSearchPart"
+								></el-button>
+							</el-tooltip>
+						</el-col>
 					</el-row>
 					<!-- 数据展示区域 -->
 					<el-row class="user-table">
-						<el-table :data="userList" style="width: 100%">
+						<el-table
+							:data="userList"
+							style="width: 100%"
+							:header-cell-style="{ background: '#F8F8F9', color: '#606266' }"
+						>
+							<el-table-column type="selection" width="55"> </el-table-column>
 							<el-table-column prop="id" label="用户编号"> </el-table-column>
 							<el-table-column prop="userName" label="用户名称"> </el-table-column>
 							<el-table-column prop="nickName" label="用户昵称"> </el-table-column>
@@ -126,7 +159,7 @@
 		</el-row>
 		<!-- 添加用户弹出框区域 -->
 		<el-dialog title="添加用户" :visible.sync="addUserDialogVisible" width="30%">
-			<el-form :model="addUserForm" label-width="80px" class="add-user-form" size="medium">
+			<el-form :model="addUserForm" label-width="80px" class="user-form" size="medium">
 				<el-row>
 					<el-col :span="12">
 						<el-form-item label="用户昵称" prop="nickName" required>
@@ -225,12 +258,116 @@
 				<el-button type="primary" @click="addUserDialogVisible = false">确 定</el-button>
 			</span>
 		</el-dialog>
+		<!-- 添加用户弹出框区域 -->
+		<el-dialog title="修改用户" :visible.sync="editUserDialogVisible" width="30%">
+			<el-form :model="editUserForm" label-width="80px" class="user-form" size="medium">
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="用户昵称" prop="nickName" required>
+							<el-input placeholder="请输入用户昵称" v-model="editUserForm.nickName"></el-input>
+						</el-form-item>
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="归属部门" prop="dept" required>
+							<treeselect v-model="editUserForm.deptId" :multiple="true" :options="deptlist" />
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="手机号码" prop="phone" required>
+							<el-input v-model="editUserForm.phone" placeholder="请输入手机号码"></el-input>
+						</el-form-item>
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="邮箱" prop="email" required>
+							<el-input v-model="editUserForm.email" placeholder="请输入邮箱"></el-input>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="用户名称" prop="userName" required>
+							<el-input v-model="editUserForm.userName" placeholder="请输入用户名称"></el-input>
+						</el-form-item>
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="用户密码" prop="password" required>
+							<el-input v-model="editUserForm.password" placeholder="请输入用户密码"></el-input>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="用户性别" prop="gender">
+							<el-select v-model="editUserForm.gender" placeholder="请选择性别">
+								<el-option
+									v-for="item in gender"
+									:key="item.value"
+									:label="item.label"
+									:value="item.value"
+								>
+								</el-option>
+							</el-select>
+						</el-form-item>
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="状态" prop="status">
+							<el-radio-group v-model="editUserForm.status">
+								<el-radio label="0">正常</el-radio>
+								<el-radio label="1">停用</el-radio>
+							</el-radio-group>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-col :span="12">
+						<el-form-item label="岗位" prop="post">
+							<el-select v-model="editUserForm.postId" placeholder="请选择岗位">
+								<el-option
+									v-for="item in post"
+									:key="item.value"
+									:label="item.label"
+									:value="item.value"
+								>
+								</el-option>
+							</el-select>
+						</el-form-item>
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="角色" prop="roleId">
+							<el-select v-model="editUserForm.roleId" placeholder="请选择岗位">
+								<el-option
+									v-for="item in roles"
+									:key="item.value"
+									:label="item.label"
+									:value="item.value"
+								>
+								</el-option>
+							</el-select>
+						</el-form-item>
+					</el-col>
+				</el-row>
+				<el-row>
+					<el-form-item label="备注" prop="remark" class="form-textarea">
+						<el-input type="textarea" :rows="3" placeholder="请输入内容"></el-input>
+					</el-form-item>
+				</el-row>
+			</el-form>
+			<span slot="footer" class="dialog-footer">
+				<el-button @click="editUserDialogVisible = false">取 消</el-button>
+				<el-button type="primary" @click="editUserDialogVisible = false">确 定</el-button>
+			</span>
+		</el-dialog>
 		<!-- 导入用户数据 弹出框区域 -->
 		<el-dialog title="用户导入" :visible.sync="uploadDialogVisible" width="20%">
 			<el-upload class="upload-demo" drag action="https://jsonplaceholder.typicode.com/posts/" multiple>
 				<i class="el-icon-upload"></i>
 				<div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-				<div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+				<div class="el-upload__tip" slot="tip">
+					<el-checkbox v-model="checked"></el-checkbox> 是否更新已存在的用户数据
+					<a href="#"> 下载模板</a>
+				</div>
 			</el-upload>
 			<span slot="footer" class="dialog-footer">
 				<el-button @click="uploadDialogVisible = false">取 消</el-button>
@@ -316,7 +453,18 @@ export default {
 	}
 }
 
+// 用户操作区域
+.refresh,
+.hide-search {
+	padding: 7px;
+}
+
+.user-btns {
+	margin-bottom: 10px;
+}
+
 // 用户数据展示区域
+
 .user-table {
 	margin-bottom: 20px;
 }
@@ -325,7 +473,8 @@ export default {
 	float: right;
 }
 
-.add-user-form {
+// 新增用户弹出框
+.user-form {
 	.el-form-item /deep/ .el-form-item__label {
 		font-weight: bold;
 	}
@@ -338,6 +487,7 @@ export default {
 	}
 }
 
+// 导入用户数据弹出框
 .upload-demo /deep/.el-upload-dragger {
 	width: 345px;
 }
