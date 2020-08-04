@@ -3,7 +3,7 @@
 		<el-card>
 			<!-- 菜单搜索区域 -->
 			<el-row class="menu-contain" v-if="showSearch">
-				<el-form label-width="70px" :model="searchMenuFrom" class="menu-search">
+				<el-form label-width="70px" :model="searchDeptFrom" class="menu-search">
 					<el-form-item label="菜单名称" prop="menuName" class="search-form-item">
 						<el-input v-model="searchMenuFrom.menuName" clearable placeholder="请输入角色名称"></el-input>
 					</el-form-item>
@@ -31,18 +31,19 @@
 			<!-- 菜单数据展示区域 -->
 			<el-row class="roles-table">
 				<el-table
-					:data="rolesList"
+					:data="menuList"
 					style="width: 100%"
 					:header-cell-style="{ background: '#F8F8F9', color: '#606266' }"
+					row-key="menuId"
+					:tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
 				>
-					<el-table-column prop="roleId" label="菜单名称" width="160px"> </el-table-column>
-					<el-table-column prop="roleName" label="图标" width="100px" align="center"> </el-table-column>
-					<el-table-column prop="roleSort" label="排序" width="60px"> </el-table-column>
-					<el-table-column prop="roleKey" label="权限标识" width="320px"> </el-table-column>
-					<el-table-column prop="roleKey" label="组件路径" width="320px"> </el-table-column>
-					<el-table-column prop="state" label="状态" width="80px" align="center"> </el-table-column>
-					<el-table-column prop="creationTime" label="创建时间" width="320px" align="center">
-					</el-table-column>
+					<el-table-column prop="menuName" label="菜单名称" width="160px"> </el-table-column>
+					<el-table-column prop="icon" label="图标" width="100px" align="center"> </el-table-column>
+					<el-table-column prop="menuSort" label="排序" width="60px"> </el-table-column>
+					<el-table-column prop="perms" label="权限标识" width="320px"> </el-table-column>
+					<el-table-column prop="component" label="组件路径" width="320px"> </el-table-column>
+					<el-table-column prop="status" label="状态" width="80px" align="center"> </el-table-column>
+					<el-table-column prop="createTime" label="创建时间" width="320px" align="center"> </el-table-column>
 					<el-table-column label="操作" align="center">
 						<template slot-scope="scope">
 							<el-button type="text" size="mini" icon="el-icon-edit" @click="showEditRoleDialogVisible">

@@ -5,11 +5,11 @@ export default {
 			searchRoleForm: {
 				roleName: '',
 				roleKey: '',
-				state: '',
+				status: '',
 				date: ''
 			},
 			// 角色状态选项
-			roleStateOptions: [
+			rolestatusOptions: [
 				{
 					value: '正常',
 					label: '正常'
@@ -26,7 +26,7 @@ export default {
 					roleName: '超级管理员',
 					roleKey: 'admin',
 					roleSort: '1',
-					state: '',
+					status: '',
 					creationTime: '2020-8-3'
 				},
 				{
@@ -34,7 +34,7 @@ export default {
 					roleName: '管理员',
 					roleKey: 'admin',
 					roleSort: '2',
-					state: '',
+					status: '',
 					creationTime: '2020-8-3'
 				}
 			],
@@ -45,7 +45,7 @@ export default {
 				roleName: '',
 				roleKey: '',
 				roleSort: 0,
-				state: '',
+				status: '',
 				menuPermissions: [],
 				remark: ''
 			},
@@ -181,7 +181,7 @@ export default {
 				roleName: '',
 				roleKey: '',
 				roleSort: 0,
-				state: '',
+				status: '',
 				menuPermissions: [],
 				remark: ''
 			},

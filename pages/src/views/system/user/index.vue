@@ -28,8 +28,8 @@
 						<el-form-item label="手机号码" prop="phone" class="search-form-item">
 							<el-input v-model="userForm.phone" clearable placeholder="请输入手机号码"></el-input>
 						</el-form-item>
-						<el-form-item label="状态" prop="state" class="search-form-item">
-							<el-select v-model="userForm.state" placeholder="用户状态" clearable>
+						<el-form-item label="状态" prop="status" class="search-form-item">
+							<el-select v-model="userForm.status" placeholder="用户状态" clearable>
 								<el-option
 									v-for="item in options"
 									:key="item.value"

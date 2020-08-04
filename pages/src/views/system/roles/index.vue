@@ -10,10 +10,10 @@
 					<el-form-item label="权限字符" prop="roleKey" class="search-form-item">
 						<el-input v-model="searchRoleForm.phone" clearable placeholder="请输入权限字符"></el-input>
 					</el-form-item>
-					<el-form-item label="状态" prop="state" class="search-form-item">
-						<el-select v-model="searchRoleForm.state" placeholder="角色状态" clearable>
+					<el-form-item label="状态" prop="status" class="search-form-item">
+						<el-select v-model="searchRoleForm.status" placeholder="角色状态" clearable>
 							<el-option
-								v-for="item in roleStateOptions"
+								v-for="item in rolestatusOptions"
 								:key="item.value"
 								:label="item.label"
 								:value="item.value"
@@ -77,10 +77,10 @@
 					<el-table-column prop="roleName" label="角色名称" width="150px"> </el-table-column>
 					<el-table-column prop="roleKey" label="权限字符" width="150px"> </el-table-column>
 					<el-table-column prop="roleSort" label="显示顺序" width="100px"> </el-table-column>
-					<el-table-column prop="state" label="状态" width="100px">
+					<el-table-column prop="status" label="状态" width="100px">
 						<template slot-scope="scope">
 							<el-switch
-								v-model="scope.row.state"
+								v-model="scope.row.status"
 								active-color="#13ce66"
 								inactive-color="#ff4949"
 								active-value="0"
@@ -144,8 +144,8 @@
 						:max="10"
 					></el-input-number>
 				</el-form-item>
-				<el-form-item prop="state" label="状态">
-					<el-radio-group v-model="addRoleForm.state">
+				<el-form-item prop="status" label="状态">
+					<el-radio-group v-model="addRoleForm.status">
 						<el-radio :label="0">正常</el-radio>
 						<el-radio :label="1">停用</el-radio>
 					</el-radio-group>
@@ -188,8 +188,8 @@
 						:max="10"
 					></el-input-number>
 				</el-form-item>
-				<el-form-item prop="state" label="状态">
-					<el-radio-group v-model="editRoleForm.state">
+				<el-form-item prop="status" label="状态">
+					<el-radio-group v-model="editRoleForm.status">
 						<el-radio :label="0">正常</el-radio>
 						<el-radio :label="1">停用</el-radio>
 					</el-radio-group>

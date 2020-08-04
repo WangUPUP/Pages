@@ -12,7 +12,75 @@ export default {
 				{ value: '1', label: '停用' }
 			],
 			// 控制菜单搜索区域的显示和隐藏
-			showSearch: true
+			showSearch: true,
+			// 菜单数据列表
+			menuList: [
+				{
+					children: [],
+					component: null,
+					createTime: '2018-03-16 11:33:00',
+					icon: 'system',
+					menuId: 1,
+					menuName: '系统管理',
+					orderNum: '1',
+					parentId: 0,
+					remark: null,
+					status: '0',
+					perms: ''
+				},
+				{
+					children: [],
+					component: 'system/user/index',
+					createTime: '2018-03-16 11:33:00',
+					icon: 'user',
+					menuId: 100,
+					menuName: '用户管理',
+					orderNum: '1',
+					parentId: 1,
+					remark: null,
+					status: '0',
+					perms: 'system:user:list'
+				},
+				{
+					children: [],
+					component: 'system/role/index',
+					createTime: '2018-03-16 11:33:00',
+					icon: 'role',
+					menuId: 101,
+					menuName: '角色管理',
+					orderNum: '2',
+					parentId: 1,
+					remark: null,
+					status: '0',
+					perms: 'system:role:list'
+				},
+				{
+					children: [],
+					component: '',
+					createTime: '2018-03-16 11:33:00',
+					icon: '',
+					menuId: 1001,
+					menuName: '用户查询',
+					orderNum: '1',
+					parentId: 100,
+					remark: null,
+					status: '0',
+					perms: 'system:user:query'
+				},
+				{
+					children: [],
+					component: '',
+					createTime: '2018-03-16 11:33:00',
+					icon: '',
+					menuId: 1002,
+					menuName: '用户新增',
+					orderNum: '2',
+					parentId: 100,
+					remark: null,
+					status: '0',
+					perms: 'system:user:add'
+				}
+			]
 		}
 	}
 }

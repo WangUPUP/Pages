@@ -34,7 +34,7 @@ export default {
 			userForm: {
 				userName: '',
 				phone: '',
-				state: '',
+				status: '',
 				date: ''
 			},
 			// 用户状态选项
