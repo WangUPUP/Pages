@@ -10,7 +10,7 @@ export function handleTree(data, id, parentId, children, rootId) {
 	id = id || 'id'
 	parentId = parentId || 'parentId'
 	children = children || 'children'
-	rootId = rootId || '0'
+	rootId = rootId || 0
 	// 对源数据进行深度克隆
 	const cloneData = JSON.parse(JSON.stringify(data))
 	// 循环所有项
@@ -18,12 +18,13 @@ export function handleTree(data, id, parentId, children, rootId) {
 		let branchArr = cloneData.filter(child => {
 			return father[id] === child[parentId]
 		})
-		// branchArr.length > 0 ? (father.children = branchArr) : ''
-		if (branchArr.length > 0) {
-			father.children = branchArr
-		} else {
-			father.children = ''
-		}
+		branchArr.length > 0 ? (father.children = branchArr) : (father.children = '')
+		// if (branchArr.length > 0) {
+		// 	father.children = branchArr
+		// } else {
+		// 	father.children = ''
+		// }
+
 		// 返回第一层
 		return father[parentId] === rootId
 	})

@@ -7,7 +7,7 @@ export default {
 				status: ''
 			},
 			// 菜单状态选项
-			menuOptions: [
+			menuStatusOptions: [
 				{ value: '0', label: '正常' },
 				{ value: '1', label: '停用' }
 			],
@@ -79,6 +79,43 @@ export default {
 					remark: null,
 					status: '0',
 					perms: 'system:user:add'
+				}
+			],
+			// 控制修改菜单弹出框的显示和隐藏
+			editMenuDialogVisible: false,
+			// 修改菜单表单对象
+			editMenuForm: {
+				menuId: ''
+			},
+			// 菜单类目对象
+			menuOptions: [
+				{
+					id: '1',
+					label: '主类目',
+					children: [
+						{
+							id: '10',
+							label: '系统管理',
+							children: [
+								{
+									id: '101',
+									label: '用户管理',
+									children: [
+										{ id: '1001', label: '用户查询' },
+										{ id: '1002', label: '用户新增' }
+									]
+								},
+								{
+									id: '102',
+									label: '角色管理',
+									children: [
+										{ id: '1021', label: '角色查询' },
+										{ id: '1022', label: '角色新增' }
+									]
+								}
+							]
+						}
+					]
 				}
 			]
 		}

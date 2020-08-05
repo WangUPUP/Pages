@@ -10,6 +10,9 @@ import './assets/icons'
 
 import VCharts from 'v-charts'
 
+import { handleTree } from './util/util'
+Vue.prototype.handleTree = handleTree
+
 Vue.use(VCharts)
 Vue.use(ElementUI)
 
