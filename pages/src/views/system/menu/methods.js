@@ -4,6 +4,10 @@ export default {
 		let list = this.menuList
 		this.menuList = this.handleTree(list, 'menuId')
 	},
+	// 控制搜索区域显示和隐藏
+	showSearchPart() {
+		this.showSearch = !this.showSearch
+	},
 	// 控制修改菜单的显示和隐藏
 	showEditMenuDialogVisible() {
 		this.editMenuDialogVisible = !this.editMenuDialogVisible

@@ -37,10 +37,10 @@
 					<el-button type="primary" size="mini" icon="el-icon-search" class="role-search-btns">
 						搜索
 					</el-button>
-					<el-button size="mini" icon="el-icon-refresh" class="role-search-btns">重置</el-button>
+					<el-button size="mini" icon="el-icon-refresh" class="role-reset-btns">重置</el-button>
 				</el-form>
 			</el-row>
-			<!-- 用户操作区域 -->
+			<!-- 按钮操作区域 -->
 			<el-row class="role-btns" type="flex" justify="space-between">
 				<el-col>
 					<el-button icon="el-icon-plus" size="mini" type="primary" @click="showAddRoleDialogVisible">
@@ -58,10 +58,10 @@
 				</el-col>
 				<el-col :span="2">
 					<el-tooltip class="item" effect="dark" content="刷新角色数据" placement="top">
-						<el-button circle icon="el-icon-refresh" class="hide-search"></el-button>
+						<el-button circle icon="el-icon-refresh" class="refresh"></el-button>
 					</el-tooltip>
 					<el-tooltip class="item" effect="dark" content="隐藏用角色搜索" placement="top">
-						<el-button circle icon="el-icon-search" class="refresh" @click="showSearchPart"></el-button>
+						<el-button circle icon="el-icon-search" class="hide-search" @click="showSearchPart"></el-button>
 					</el-tooltip>
 				</el-col>
 			</el-row>
@@ -89,7 +89,7 @@
 							</el-switch>
 						</template>
 					</el-table-column>
-					<el-table-column prop="creationTime" label="创建时间" width="180px"> </el-table-column>
+					<el-table-column prop="createTime" label="创建时间" width="180px"> </el-table-column>
 					<el-table-column label="操作" align="center">
 						<template slot-scope="scope">
 							<el-button type="text" size="mini" icon="el-icon-edit" @click="showEditRoleDialogVisible">
@@ -297,12 +297,18 @@ export default {
 	position: relative;
 }
 
-.role-search-btns {
+.role-search-btns,
+.role-reset-btns {
 	height: 100%;
 	margin-top: 8px;
 }
 
-// 用户操作区域
+.role-search-btns {
+	background-color: #20b2aa;
+	border: 1px solid #20b2aa;
+}
+
+// 按钮操作区域
 .refresh,
 .hide-search {
 	padding: 7px;

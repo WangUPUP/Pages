@@ -85,7 +85,17 @@ export default {
 			editMenuDialogVisible: false,
 			// 修改菜单表单对象
 			editMenuForm: {
-				menuId: ''
+				menuId: [],
+				menuType: 'M',
+				icon: '',
+				menuName: '',
+				menuSort: '',
+				isOut: '',
+				routeAddress: '',
+				path: '',
+				perms: '',
+				displayStatus: 0,
+				menuStatus: 0
 			},
 			// 菜单类目对象
 			menuOptions: [

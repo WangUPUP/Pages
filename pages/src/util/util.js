@@ -30,3 +30,10 @@ export function handleTree(data, id, parentId, children, rootId) {
 	})
 	return treeData !== '' ? treeData : data
 }
+
+// 重置表单方法
+export function restForm(refName) {
+	if (this.refs[refName]) {
+		this.refs[refName].resetFields()
+	}
+}

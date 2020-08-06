@@ -54,7 +54,11 @@
 						</el-form-item>
 					</el-form>
 					<el-row class="user-search-btns">
-						<el-col><el-button type="primary" size="mini" icon="el-icon-search">搜索</el-button></el-col>
+						<el-col
+							><el-button type="primary" size="mini" icon="el-icon-search" class="user-search-btn"
+								>搜索</el-button
+							></el-col
+						>
 						<el-col><el-button size="mini" icon="el-icon-refresh">重置</el-button></el-col>
 					</el-row>
 				</el-row>
@@ -127,7 +131,7 @@
 									</el-switch>
 								</template>
 							</el-table-column>
-							<el-table-column prop="creationTime" label="创建时间"> </el-table-column>
+							<el-table-column prop="createTime" label="创建时间"> </el-table-column>
 							<el-table-column label="操作" width="220px">
 								<template slot-scope="scope">
 									<el-button type="text" size="mini" icon="el-icon-edit">修改</el-button>
@@ -451,6 +455,11 @@ export default {
 		width: 6%;
 		margin-right: 5px;
 	}
+}
+
+.user-search-btn {
+	background-color: #20b2aa;
+	border: 1px solid #20b2aa;
 }
 
 // 用户操作区域

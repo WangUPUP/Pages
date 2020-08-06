@@ -27,7 +27,7 @@ export default {
 					roleKey: 'admin',
 					roleSort: '1',
 					status: '',
-					creationTime: '2020-8-3'
+					createTime: '2020-8-3'
 				},
 				{
 					roleId: 2,
@@ -35,7 +35,7 @@ export default {
 					roleKey: 'admin',
 					roleSort: '2',
 					status: '',
-					creationTime: '2020-8-3'
+					createTime: '2020-8-3'
 				}
 			],
 			// 控制新增角色对话框的显示和隐藏

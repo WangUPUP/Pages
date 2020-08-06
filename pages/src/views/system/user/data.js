@@ -57,7 +57,7 @@ export default {
 					dept: '开发部门',
 					phone: '123456789',
 					status: '0',
-					creationTime: '2020-20-20',
+					createTime: '2020-20-20',
 					userId: '1'
 				},
 				{
@@ -67,7 +67,7 @@ export default {
 					dept: '开发部门',
 					phone: '987654321',
 					status: '1',
-					creationTime: '2020-20-21',
+					createTime: '2020-20-21',
 					userId: '2'
 				}
 			],
